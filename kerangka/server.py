@@ -4,12 +4,21 @@ import speech_recognition as sr
 import os
 from playsound import playsound
 from bardapi import Bard
+from multiprocessing import context
+from turtle import title
+from django.shortcuts import render,HttpResponse
 
 # set your OpenAI API key
 os.environ["_BARD_API_KEY"] = "YAjdFixD9kH7FAwf11isWUPoGpPIboBB8xpkyf7PfahPGX0UPFcwcqRYnyB-crIBLmDy4w."
 
 # Initialize the text-to-speech engine
 engine = pyttsx3.init()
+
+# def template(request):
+#     context={
+#         'title':title
+#     }
+#     return render(request, 'template.html',context)
 
 def transcribe_audio_to_text(filename):
     recognizer = sr.Recognizer()

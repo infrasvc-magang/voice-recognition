@@ -1,0 +1,20 @@
+<!-- my_template.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My Page</title>
+</head>
+<body>
+    <h1>Data from API:</h1>
+    <ul>
+        {% for item in text %}
+            <li>{{ item }}</li>
+        {% endfor %}
+    </ul>
+    <ul>
+        {% for item in data %}
+            <li>{{ item }}</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
