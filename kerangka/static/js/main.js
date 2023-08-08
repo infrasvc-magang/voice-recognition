@@ -32,31 +32,39 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // Mengirim pesan saat tombol "Enter" ditekan
-  inputBox.addEventListener('keypress', (event) => {
+inputBox.addEventListener('keypress', (event) => {
     if (event.key === 'Enter') {
       const message = inputBox.value;
       inputBox.value = '';
       displayMessage(message, 'user');
+      //kirim permintaan POST
+      $.ajax({
+        type: 'POST',
+        url: '/postdata/', // Update with the correct URL endpoint in your Django app
+        data: { message: message },
+        success: function(data) {
+          console.log('Response from server:', data);
+          displayMessage(data.response, 'bot');
+        },
+        error: function(error) {
+          console.error('Error:', error);
+        }
+      });
+      // Kirim permintaan AJAX GET
+      // $.ajax({
+      //   type: 'GET',
+      //   url: '/datagpt/',  // Ubah URL sesuai dengan URL endpoint di server Django
+      //   success: function(data) {
+      //     console.log('Data from server:', data);
 
-      setTimeout(function () {
-        displayMessage(data_from_api);
-      }, 1000);
+      //     // Menampilkan data dalam elemen HTML
+      //     displayMessage(data.response, 'bot'); // Specify sender as 'bot'
+      //   },
+      //   error: function(error) {
+      //     console.error('Error:', error);
+      //   }
+      // });
+
     }
   });
 });
-
-//untuk mengatur balik kelayar seblumnya jika tidak ada respon
-// var timeout;
-
-// function redirectToHomePage() {
-// timeout = setTimeout(function() {
-//   window.location.href = 'index.html';
-// }, 5000);
-// }
-// // Panggil fungsi untuk memulai timer saat halaman dimuat
-// redirectToHomePage();
-
-// // Hentikan timer jika ada interaksi dari pengguna
-// document.addEventListener('mousemove', function() {
-//     clearTimeout(timeout);
-// });
