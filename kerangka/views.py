@@ -23,6 +23,9 @@ def home(request):
 #     }
 #     return render(request, 'home.html',context)
 
+# def index(request):
+#     return render(request, 'home.html')
+
 def datagpt(request):
     os.environ["_BARD_API_KEY"] = "ZQjdFljLGNvwvYhDyiD7-WzqYLrjATqSH02RJO-XFqPhf3-o3pBzlnvMtdHe75d1S7Gf5w."  # Ganti dengan URL API yang sesuai
     text = "apa itu mobil"
@@ -33,21 +36,39 @@ def datagpt(request):
     except requests.exceptions.RequestException as e:
         return None
 
-
-# def index(request):
-#     return render(request, 'home.html')
-
 @csrf_exempt
 def postdata(request):
     if request.method == 'POST':
         data = request.POST.get('message', None)
-        os.environ["_BARD_API_KEY"] = "ZQjdFljLGNvwvYhDyiD7-WzqYLrjATqSH02RJO-XFqPhf3-o3pBzlnvMtdHe75d1S7Gf5w."
-        response = Bard().get_answer(data)['content']
-        # response_message = f'You sent: {data}'
         
-        response_data = {
-            'response': response
-        }
-        return JsonResponse(response_data)
-    
+        # Set the CORS header to allow requests from 'http://127.0.0.1:3000'
+        response = JsonResponse({'response': 'This endpoint only supports POST requests.'})
+        response["Access-Control-Allow-Origin"] = "http://127.0.0.1:3000"
+        response["Access-Control-Allow-Methods"] = "POST"
+
+        os.environ["_BARD_API_KEY"] = "aAipaXz47IJ044hCfFE6Eb9o8n56TGKahozqLt9vt6Wpnvf2_CXNWwUtKW3M2s-yUyE3FQ."
+        
+        # Try to get an answer from BARD
+        try:
+            response_data = Bard().get_answer(data)['content']
+
+            # Limit response to three sentences
+            sentences = response_data.split(". ")  # split by dot and space
+            sentences = [s + ". " for s in sentences]  # add dot and space back
+            response_data = "".join(sentences[:3])
+
+            response = JsonResponse({'response': response_data})
+
+            # Set the CORS header to allow requests from 'http://127.0.0.1:3000'
+            response["Access-Control-Allow-Origin"] = "http://127.0.0.1:3000"
+            response["Access-Control-Allow-Methods"] = "POST"
+
+            return response
+        
+        # Catch any exception and return an error message
+        except Exception as e:
+            data = {'response': "Terjadi kesalahan pada server, periksa kembali token anda"}
+            error_message = f"Gagal menerima jawaban dari BARD karena {e}"
+            return JsonResponse({'error': error_message})
+
     return JsonResponse({'response': 'This endpoint only supports POST requests.'})
