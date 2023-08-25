@@ -1,184 +1,159 @@
-
-  /* .d-flex{
-    position: absolute;
-  } */
-  .main-container {
-    display: flex;
+.voice-container h4 {
+	margin-top: 10px;
+	color: #0077ff;
+	text-align: center;
+	font-size: 18px;
+	padding: 5px;
 }
 
-.sidebar {
-    width: 280px;
-    height: 100vh;
-    flex-shrink: 0;
-    background-color: #ffffff;
-    padding: 20px;
-    border-top-right-radius: 5%;
+.btn-style:hover {
+	color: #0077ff; /* Ubah warna teks sesuai yang Anda inginkan */
 }
 
-.template-container {
-    width: 900px;
-    height: 100vh;
-    flex-grow: 1;
-    background-color: rgb(233, 244, 255);
-    padding: 20px;
-    margin-left: 10px; /* Adding margin to create space between sidebar and main content */
+#chat-box {
+	width: 1035px;
+	height: 470px;
+	border: none;
+	overflow-y: auto;
+	margin-top: 8%;
+	margin-left: 7%;
+	direction: rtl;
 }
 
-@import url('https://fonts.googleapis.com/css2?family=Ubuntu&display=swap');
-        .sidebar {
-            background-color: #FFFFFF;
-            width: 20vw;
-            height: 100vh;
-            z-index: 1;
-            top: 0;
-            left: 0;
-            overflow-x: hidden;
-            border-radius: 0px 30px 30px 0px;
-            filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
-            &:hover{
-                transform:translateY(-2px);
-                box-shadow: 0 5px 20px rgba(0, 0, 0, 1);
-        }
-        }
-        
-        .logo {
-            gap: 300px;
-            padding: 15px;
-        }
-        
-        .logo-name {
-            overflow: visible;
-            font-size: 22.66px;
-            color: #5285F2;
-            line-height: 26.04px;
-            font-weight: bold;
-        }
-        
-        .nav li {
-            display: inline-flex;
-        }
-        
-        .nav-link {
-            color: #8A8A8A;
-            font-weight: bold;
-            padding: 15px 30px 15px;
-            transition: 0.3s;
-        }
-        
-        .nav-link:hover,
-        .open a {
-            color: #5285F2;
-        }
-        
-        .open {
-            color: #5285F2;
-            background-color: #F0F7FF;
-            transition: 0.3s;
-        }
-        .template-container h4{
-            margin-top: 10px;
-            color: #0077FF;
-            text-align: center;
-            font-size: 18px;
-            padding: 5px;
-          }
-          
-        .template-container button{
-            margin-top: 0px;
-            align-items: center;
-          
-            
-          }
-          .card-stats {
-              margin-bottom: 1rem;
-          }
-          
-          .card-stats .card-body {
-              display: flex;
-              justify-content: space-between;
-              align-items: center;
-          }
-          
-          .btn-style:hover {
-            color: #0077FF; /* Ubah warna teks sesuai yang Anda inginkan */
-          }
-          
-          .report-card {
-              display: flex;
-              flex-wrap: wrap;
-              justify-content: center;
-              align-items: center;
-              gap: 20px;
-          }
-            .chatcon {
-              width: 400px;
-              margin: 50px auto;
-            }
+#chat-box > div {
+	/* Mengembalikan direction menjadi ltr */
+	direction: ltr;
+}
+#chat-box::-webkit-scrollbar {
+	/* Mengatur lebar scrollbar menjadi 12px */
+	width: 8px;
+}
 
+#chat-box::-webkit-scrollbar-track {
+	/* Mengatur warna latar belakang track menjadi oranye */
+	background: rgb(233, 244, 255);
+}
 
-            #chat-box {
-                width: 1035px;
-                height: 470px;
-                border: none;
-                overflow-y: auto;
-                margin-top: 5%;
-                margin-left: 7%;
-                direction: rtl;
-            }
+#chat-box::-webkit-scrollbar-thumb {
+	/* Mengatur warna latar belakang thumb menjadi biru */
+	background-color: #dfdfdf;
+	/* Mengatur sudut thumb menjadi bulat */
+	border-radius: 20px;
+	/* Mengatur border sebesar 3px dengan warna oranye di sekitar thumb */
+	border: 3px solid rgb(233, 244, 255);
+}
 
-            #chat-box > div {
-             /* Mengembalikan direction menjadi ltr */
-              direction: ltr;
-             }
-              #chat-box::-webkit-scrollbar {
-                /* Mengatur lebar scrollbar menjadi 12px */
-                width: 8px;
-              }
-              
-              #chat-box::-webkit-scrollbar-track {
-                /* Mengatur warna latar belakang track menjadi oranye */
-                background: rgb(233, 244, 255);
-              }
-              
-              #chat-box::-webkit-scrollbar-thumb {
-                /* Mengatur warna latar belakang thumb menjadi biru */
-                background-color: #dfdfdf;
-                /* Mengatur sudut thumb menjadi bulat */
-                border-radius: 20px;
-                /* Mengatur border sebesar 3px dengan warna oranye di sekitar thumb */
-                border: 3px solid rgb(233, 244, 255);
-              }
-            
-              #input-box {
-                width: 400px;
-                padding: 5px;
-                margin-right: 350px;
-                float: right;
-              }
-            
-              .message {
-                margin-bottom: 20px;
-                padding: 5px;
-                margin-right: 5px;
-              }
-              
-              textarea {
-                border: none; /* Menghilangkan border textarea */
-                border-radius: 10px; /* Membuat sudut textarea menjadi rounded */
-                padding: 5px; /* Menambahkan padding sebesar 5px pada textarea */
-                resize: none; /* Menghilangkan kemampuan untuk mengubah ukuran textarea */
-                overflow: hidden; /* Menghilangkan scrollbar pada textarea */
-              }
-              
-              /* Menambahkan kelas untuk textarea user */
-              .user-text {
-                color: white; /* Mengubah warna text menjadi putih */
-                background-color: rgba(0, 119, 255, 1); /* Mengubah warna latar belakang menjadi putih */
-              }
-              
-              /* Menambahkan kelas untuk textarea bot */
-              .bot-text {
-                color: #0077ff; /* Mengubah warna text menjadi biru */
-                background-color: rgb(255, 255, 255); /* Mengubah warna latar belakang menjadi biru muda */
-              }
-              
+#input-box {
+	width: 400px;
+	padding: 5px;
+	margin-left: 350px;
+	margin-bottom: 100px;
+	border: none;
+	background-color: #e1e1e1;
+	border-radius: 20px;
+}
+
+.message {
+	margin-bottom: 20px;
+	padding: 5px;
+	margin-right: 5px;
+}
+
+textarea {
+	border: none; /* Menghilangkan border textarea */
+	border-radius: 10px; /* Membuat sudut textarea menjadi rounded */
+	padding: 5px; /* Menambahkan padding sebesar 5px pada textarea */
+	resize: none; /* Menghilangkan kemampuan untuk mengubah ukuran textarea */
+	overflow: hidden; /* Menghilangkan scrollbar pada textarea */
+}
+
+/* Menambahkan kelas untuk textarea user */
+.user-text {
+	color: white; /* Mengubah warna text menjadi putih */
+	background-color: rgba(
+		0,
+		119,
+		255,
+		1
+	); /* Mengubah warna latar belakang menjadi putih */
+}
+
+/* Menambahkan kelas untuk textarea bot */
+.bot-text {
+	color: #0077ff; /* Mengubah warna text menjadi biru */
+	background-color: rgb(
+		255,
+		255,
+		255
+	); /* Mengubah warna latar belakang menjadi biru muda */
+}
+
+/* Create a selector for the voice button class */
+#voice-button {
+	/* Add some properties to make the button round */
+	border-radius: 50%;
+	width: 50px;
+	height: 50px;
+	border: none;
+	padding: 0;
+	background-color: #0077ff;
+	/* Add a position property to make the button relative to the loading icon */
+	position: relative;
+}
+
+/* Adjust the color, size, and position of the icon */
+#voice-button i {
+	color: white;
+	font-size: 20px;
+	margin: auto;
+}
+
+/* Add a loading class for the loading icon */
+.loading {
+	/* Change the animation property to have the same duration and iteration count */
+	animation: spin 1s linear 1s infinite;
+}
+
+/* Define the keyframes for the spin animation */
+@keyframes spin {
+	from {
+		transform: rotate(0deg);
+	}
+	to {
+		transform: rotate(360deg);
+	}
+}
+
+/* Optionally, you can style the loading icon as you like */
+#loading-icon {
+	color: blue;
+	font-size: 15px;
+}
+
+/* Hide the loading icon by default */
+#loading-icon {
+	display: none;
+}
+
+/* Add a position property to make the loading icon absolute to the button */
+#loading-icon {
+	position: absolute;
+}
+
+/* Add some properties to adjust the position of the loading icon */
+#loading-icon {
+	left: 15px; /* Adjust this value as you like */
+	top: 15px; /* Adjust this value as you like */
+	right: 15px; /* Adjust this value as you like */
+	bottom: 15px; /* Adjust this value as you like */
+}
+
+/* Add a border-radius property to make the loading icon container round */
+#loading-icon {
+	border-radius: 50%;
+}
+
+/* Add a transform-origin property to make the loading icon rotate around its center */
+.loading {
+	transform-origin: center;
+}
